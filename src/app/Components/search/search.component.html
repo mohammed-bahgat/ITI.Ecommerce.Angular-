@@ -1,0 +1,36 @@
+<app-header></app-header>
+<br><br> <br>
+<div class="m-5">
+<div class="row row-cols-1 row-cols-md-4 g-4" style="width: 100%;">
+
+    <div class="col" *ngFor="let prd of searchItems , let i = index">
+      <div class="card p-0">
+        <img style="width: auto; height:200px ;" src={{prd.productImageList[0].path}}  class="card-img-top" alt="...">
+        <div class="card-body">
+          <div *ngIf="currentCulture == 'ar'">
+            <div class="fs-5 fw-bold" >{{ prd.nameAR }}</div>
+          </div>
+          <div *ngIf="currentCulture == 'en'">
+            <div class="fs-5 fw-bold"  >{{ prd.nameEN }}</div>
+          </div>
+          <div >
+            <div class="price d-flex flex-row align-items-center"> 
+                <div class="text-danger ml-2"> <small class="dis-price">{{prd.unitPrice}} {{" EGP "|translate}}</small> <br> <span>{{"OFF"|translate}}%{{prd.discount}} </span> </div>
+                <br>
+
+            </div>
+            <span class="act-price">{{prd.totalPrice}} {{" EGP "|translate}}</span>
+          </div>
+
+          <br>
+
+        </div>
+        <a class="btn btn-primary my-1"  (click)="AddToCart(prd)">{{"AddToCard"|translate}}</a>
+        <a class="btn btn-primary my-1"  (click)="OpenPrdDetails(prd.id)">{{"More Details"|translate}}</a>
+
+    </div>
+    </div>
+</div>
+</div>
+<br><br> <br>
+<app-footer></app-footer>
