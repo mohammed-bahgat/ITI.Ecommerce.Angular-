@@ -76,5 +76,8 @@
     "price into":"السعر الى",
     "price from":"السعر من",
     "Product Name":"اسم المنتج",
-    "Product Price":"سعر المنتج"
+    "Product Price":"سعر المنتج",
+    "Orders On the way":"طلبات لم تصلك بعد ",
+    "Delete Order" :"حذف الطلب" ,
+    "Update Order":"تعديل الطلب"
 }
