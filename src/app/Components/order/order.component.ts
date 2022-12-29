@@ -14,9 +14,16 @@ import { IOrder } from 'src/app/Models/iorder';
 export class OrderComponent implements OnInit {
   Address : string ;
   items : IProductOffer[] =[];
-  length:number=0;
+  OrderListlength:number=0;
   ordersList:IOrder[]=[]
   customerId:string;
+  pending:boolean=false;
+  delivered :boolean=false;
+  pendingOrderList:IOrder[]=[];
+  pendingListlength:number=0;
+  deliveredOrderList:IOrder[]=[];
+  DeliveredListlength:number=0;
+
   constructor(    private route: Router,
     private cookieService: CookieService,
     private orderSer: OrderAPIService,private OrderService :OrderService, ) {
@@ -25,17 +32,43 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.items = this.OrderService.getItems();
-    this.length=this.items.length; 
+    // this.items = this.OrderService.getItems();
+    //get User orders
+  this.orderSer.getByCustomerId(this.customerId).subscribe((orders)=>{
+    this.ordersList = orders;
+    
+    console.log(this.ordersList);
+    console.log(orders);
+   // get pending orders
+    this.pendingOrderList=this.ordersList.filter((order)=>order.status==="Pending")
+this.pendingListlength=this.pendingOrderList.length;
+console.log(this.pendingOrderList,this.pendingListlength);
+
+    //get Delivered orders
+    this.deliveredOrderList=this.ordersList.filter((order)=>order.status=="Delivered")
+    this.DeliveredListlength=this.deliveredOrderList.length
+    console.log(this.deliveredOrderList,this.DeliveredListlength);
+     this.OrderListlength=this.ordersList.length;
+
+    
+    console.log(this.OrderListlength);
+  });
+
+    
+    
   }
 
  
 
-  deleteOrder() {
-    var orderId = this.cookieService.get('orderId');
-    this.orderSer.delete(+orderId).subscribe(() => {});
-    localStorage.removeItem('orderItems');
-    this.route.navigate(['Home']);
+  deleteOrder(pendingorderId:number) {
+    // var orderId = this.cookieService.get('orderId');
+    // this.orderSer.delete(+orderId).subscribe(() => {});
+    // localStorage.removeItem('orderItems');
+    // this.route.navigate(['Home']);
+    this.orderSer.delete(pendingorderId).subscribe(() => {});
+    this.route.navigate(['Order']);
     }
-  
+    UpdateOrder(pendingorderId:number){
+
+    }
 }

@@ -40,13 +40,14 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.item = this.shoppingCartservice.getItems();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.currentCulture = event.lang;
     });
 
     this.length = this.item.length;
     
+console.log(this.length);
 
     this.calcTotalPrice();
   }

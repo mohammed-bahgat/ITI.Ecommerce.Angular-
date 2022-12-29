@@ -5,8 +5,9 @@
 
     <div class="col" *ngFor="let prd of searchItems , let i = index">
       <div class="card p-0">
-        <img style="width: auto; height:200px ;" src={{prd.productImageList[0].path}}  class="card-img-top" alt="...">
-        <div class="card-body">
+        <div class="d-flex justify-content-center">
+          <img  src={{prd.productImageList[0].path}}  style="width: auto; height: 150px;" alt="...">
+        </div>        <div class="card-body">
           <div *ngIf="currentCulture == 'ar'">
             <div class="fs-5 fw-bold" >{{ prd.nameAR }}</div>
           </div>
