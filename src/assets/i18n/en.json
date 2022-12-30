@@ -81,5 +81,6 @@
     "Orders On the way":"Orders On the way",
 
     "Delete Order" :"Delete Order" ,
-    "Update Order":"Update Order"
+    "Update Order":"Update Order",
+    "Orders Delivered":"Orders Delivered"
 }
