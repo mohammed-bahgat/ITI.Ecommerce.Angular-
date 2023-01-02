@@ -24,7 +24,7 @@ searchLanguage: string="ar";
 
   constructor(private signIn:SigninService,private cookieService:CookieService,private route: Router
     ,public translate: TranslateService ) {
-      this.currentCulture = 'ar';
+      this.currentCulture = 'en';
 
      }
   ngOnInit(): void {

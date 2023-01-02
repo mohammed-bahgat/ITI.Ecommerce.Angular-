@@ -14,7 +14,7 @@
           <img src={{prd.productImageList[0].path}} style="width: auto; height: 150px;" alt="...">
         </div>
         <div class="card-body">
-          <div *ngIf="currentCulture == 'ar'">
+          <div *ngIf="currentCulture != 'en'">
             <div class="fs-5 fw-bold">{{ prd.nameAR }}</div>
           </div>
           <div *ngIf="currentCulture == 'en'">
@@ -33,8 +33,10 @@
           <br>
 
         </div>
-        <a class="btn btn-primary my-1" (click)="AddToCart(prd)">{{"AddToCard"|translate}}</a>
-        <a class="btn btn-primary my-1" (click)="OpenPrdDetails(prd.id)">{{"More Details"|translate}}</a>
+        
+        <a class="btn btn-primary my-1 w-75 mx-auto fw-bold"  (click)="AddToCart(prd)">{{"AddToCard"|translate}}</a>
+        <a class="btn btn-primary my-1 mb-3 w-75 mx-auto fw-bold" (click)="OpenPrdDetails(prd.id)">{{"More Details"|translate}}</a>
+      
       </div>
     </div>
   </div>

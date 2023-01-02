@@ -28,7 +28,7 @@ export class ProductByCatIdComponent implements OnInit {
     private route:Router
   ) 
   {
-    this.currentCulture = 'ar';
+    this.currentCulture = 'en';
   }
 
   ngOnInit(): void {
