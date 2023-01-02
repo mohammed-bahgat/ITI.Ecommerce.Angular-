@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   currentCulture: string;
   searchItems: IProductOffer[] = [];
   prdOfferlist: IProductOffer[] = [];
-  searchLanguage: string="ar";
+  searchLanguage: string="en";
   constructor(
     private categoryApiService: CategoryApiService,
     public translate: TranslateService,
@@ -50,9 +50,9 @@ export class HeaderComponent implements OnInit {
 
   filterByName(item: string) {
     var english = /^[A-Za-z0-9]*$/;
-    this.searchLanguage="en";
-    if (english.test(item)) {
     
+    if (english.test(item)) {
+    this.searchLanguage="en";
       this.searchItems = this.prdOfferlist.filter((b) =>
        b.nameEN.toUpperCase().includes(item.toUpperCase())
       );
@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
       this.searchLanguage="ar";
   
       this.searchItems = this.prdOfferlist.filter((b) =>
-      b.nameEN.toUpperCase().includes(item.toUpperCase())
+      b.nameAR.toUpperCase().includes(item.toUpperCase())
       );
     }
 
