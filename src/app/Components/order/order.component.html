@@ -34,65 +34,41 @@
                 </div>
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">{{ "Name" | translate }}</th>
-                            <th scope="col">{{ "Quantity" | translate }}</th>
-                            <th scope="col">{{ "Unit Price" | translate }}</th>
-                            <th scope="col">{{ "Total price" | translate }}</th>
-                        </tr>
+                     
                     </thead>
                     <tbody>
-                        <div  *ngFor="let order of pendingOrderList">
-                            <ng-container class="" *ngFor="let data of order.productList; let i = index">
-                                <tr>
+                        <ng-container   *ngFor="let order of pendingOrderList">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">{{ "Name" | translate }}</th>
+                                <th scope="col">{{ "Quantity" | translate }}</th>
+                                <th scope="col">{{ "Unit Price" | translate }}</th>
+                                <th scope="col">{{ "Total price" | translate }}</th>
+                            </tr>
+                                <tr  *ngFor="let data of order.productList; let i = index">
                                     <th>{{ i + 1 }}</th>
-                                    <td>{{ data.nameAR }}</td>
+                                    <td> <div  *ngIf="currentCulture == 'en'">
+                                        {{ data.nameEN }}</div>
+                                         <div *ngIf="currentCulture == 'ar'">
+                                       {{ data.nameAR }}</div></td>
                                     <td>{{ data.quantity }}</td>
                                     <td>{{ data.totalPrice }}</td>
                                     <td>{{ data.totalPrice * data.quantity }}</td>
                                 </tr>
-                            </ng-container>
+                            
 
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                {{ "Confirm Deleting" | translate }}
-                                            </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            {{
-                                            "Are You sure you want to delete the order" | translate
-                                            }}
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">
-                                                {{ "Cancel" | translate }}
-                                            </button>
-                                            <button type="button" class="btn btn-danger"
-                                                (click)="deleteOrder(order.id)">
-                                                {{ "Delete" | translate }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <div>
                             <div class="">
-                                <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-danger m-1 " data-bs-toggle="modal" (click)="deleteOrder(order.id)"
                                     data-bs-target="#exampleModal">
                                     {{ "Delete Order" | translate }}
                                 </button>
-                                <a class="btn btn-warning m-1" (click)="UpdateOrder(order.id)">{{
+                                <a class="btn btn-warning m-1 " (click)="UpdateOrder(order.id)">{{
                                     "Update Order" | translate
                                     }}</a>
                             </div>
                         </div>
+                        </ng-container>
                     </tbody>
                 </table>
             </div>
@@ -113,26 +89,39 @@
         </p>
     </div>
 
-    <table class="table">
+    <table class="table"  style="width: 75%;">
         <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{{ "Name" | translate }}</th>
-            </tr>
+          
         </thead>
         <tbody>
-            <ng-container *ngFor="let order of deliveredOrderList">
-                <ng-container class="" *ngFor="let data of order.productList; let i = index">
-                   
-                    <tr>
-                        <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ data.nameAR }}</td>
+            <ng-container *ngFor="let order of deliveredOrderList; let ordI = index">
+             
                        
+            
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ "Name" | translate }}</th>
+                    <th scope="col">{{ "Rate" | translate }}</th>
+                    <th scope="col">{{ order.orderDate|date }}</th>
+                </tr>
+                   
+                    <tr *ngFor="let data of order.productList; let prdI = index">
+                        <th >{{ prdI + 1 }}</th>
+                       <td> <div  *ngIf="currentCulture == 'en'">
+                            {{ data.nameEN }}</div>
+                             <div *ngIf="currentCulture == 'ar'">
+                           {{ data.nameAR }}</div></td>
+                        
+                        <td>  <ngx-star-rating [(ngModel)]="productrate[ordI][prdI]"  (change)="SetRatingValue(order.id,data.id,ordI,prdI)" id="prd{{prdI}}+ord{{ordI}}" ></ngx-star-rating>
+                        </td>
+                        <td></td>
                     </tr>
-                </ng-container>
+
+                   
             </ng-container>
         </tbody>
     </table>
+
 </div>
 
 </div>

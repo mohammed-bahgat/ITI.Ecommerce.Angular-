@@ -74,13 +74,24 @@
     "Address":"Address",
     "Retry Password":"Retry Password",
     "sign up":"sign up",
-    "price into":"price into",
+    "price into":"price to",
     "price from":"price from",
     "Product Name":"Product Name",
     "Product Price":"Product Price",
     "Orders On the way":"Orders On the way",
-
     "Delete Order" :"Delete Order" ,
     "Update Order":"Update Order",
-    "Orders Delivered":"Orders Delivered"
+    "Orders Delivered":"Orders Delivered",
+    "Rate":"Rate",
+    "Back":"Back",
+    "!Welcome back ":"!Welcome back ",
+    "Sign in to your B.TECH account and explore our latest exclusive offers":
+    "Sign in to your B.TECH account and explore our latest exclusive offers",
+    "!Let's get started":"!Let's get started",
+    ".Use your Email to sign in or sign up":".Use your Email to sign in or sign up",
+    "Back to home":"Back to home",
+
+    "Save":"Save",
+    "Delete":"Delete"
+
 }

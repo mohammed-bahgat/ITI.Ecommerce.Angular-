@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { IOrder } from 'src/app/Models/iorder';
 import { IPayment } from 'src/app/Models/ipayment';
@@ -10,38 +10,57 @@ import { PaymentAPIService } from 'src/app/Services/payment-api.service';
 
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { OrderService } from 'src/app/Services/order.service';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-update-order',
   templateUrl: './update-order.component.html',
   styleUrls: ['./update-order.component.css']
 })
 export class UpdateOrderComponent implements OnInit {
+  currentCulture: string;
   items!: IProductOffer[] ;
+  orderId:number = 0;
+  order!:IOrder ;
   constructor(private shoppingCartservice: ShoppingCartService,
     private route: Router,
     private cookieService: CookieService,
     private paymentSer: PaymentAPIService,
-    private orderSer: OrderAPIService,private OrderService :OrderService) 
+    private orderSer: OrderAPIService,
+    private OrderService :OrderService,
+    private activedRoute:ActivatedRoute,
+    private translate: TranslateService) 
     {
-
+      this.currentCulture = 'ar';
     }
   ngOnInit(): void {
-   
-    this.items = this.OrderService.getItems();
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.currentCulture = event.lang;
+    });
+    // this.items = this.OrderService.getItems();
+    this.activedRoute.paramMap.subscribe(paramMap =>{
+      this.orderId=(paramMap.get('orderId'))?Number(paramMap.get('orderId')):0;
+    console.log(this.orderId);
+    
+    this.orderSer.getById(this.orderId).subscribe(order =>{
+      this.order = order;
+    })
+    
+    
+    })
   }
   
 deleteOrder(id:number){
-  var newlist:IProductOffer[]=[];
-  for (const prd of this.items) {
+  var newPrdlist:IProductOffer[]=[];
+  for (const prd of this.order.productList) {
     
   if(prd.id !== id){
-    newlist.push(prd)
+    newPrdlist.push(prd)
   }
   }
-  this.items=newlist
-  console.log(this.items);
+  this.order.productList=newPrdlist
+  // console.log(this.items);
   
-  localStorage.setItem('orderItems', JSON.stringify(this.items));
+  // localStorage.setItem('orderItems', JSON.stringify(this.items));
 
 }
 // UpdateOrder(){
@@ -80,6 +99,9 @@ deleteOrder(id:number){
     // },3000)
 
 // }
+UpdateOrder(order:IOrder) {
+  this.orderSer.update(order).subscribe(()=>{this.route.navigate(['Order']);}
+  )
 }
-
+}
 

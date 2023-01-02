@@ -19,7 +19,7 @@ export class ProductByCatIdComponent implements OnInit {
   PriceFrom: number = 0;
   Priceto: number = 0;
   currentCulture: string;
- 
+  searchList: IProductOffer[] = [];
   constructor(
     private productOfferApiservice: ProductOfferApiService,
     private activedRoute: ActivatedRoute,
@@ -43,7 +43,7 @@ export class ProductByCatIdComponent implements OnInit {
         .subscribe((prdList) => {
           this.prdOfferlist = prdList;
           this.prdOfferlist.map(i =>i.productImageList[0].path="http://localhost:8080/"+i.productImageList[0].path)
-
+ this.searchList=this.prdOfferlist;
         });
     });
 
@@ -65,7 +65,7 @@ export class ProductByCatIdComponent implements OnInit {
   
 
   filterProduct() {
-    this.prdOfferlist = this.prdOfferlist.filter(
+    this.searchList = this.prdOfferlist.filter(
       (p) => p.totalPrice >= this.PriceFrom && p.totalPrice <= this.Priceto
     );
   }

@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'card',component:CardComponent},
   {path:'Order',component:OrderComponent},
   {path:'pay/:price',component:PaypalComponent},
-  {path:'update',component:UpdateOrderComponent},
+  {path:'update/:orderId',component:UpdateOrderComponent},
 
   {path:'**',component:NotFoundComponent}
   // {path:'register',component:UserRegisterComponent},
