@@ -28,7 +28,7 @@ import { OrderComponent } from './Components/order/order.component';
 import { PaypalComponent } from './Components/paypal/paypal.component';
 import { UpdateOrderComponent } from './Components/update-order/update-order.component';
 import { SearchComponent } from './Components/search/search.component';
-
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
 @NgModule({
@@ -58,7 +58,7 @@ import { SearchComponent } from './Components/search/search.component';
 
   ],
   imports: [
-
+    NgxStarRatingModule,
     NgxPayPalModule,
     ReactiveFormsModule,
     FormsModule,

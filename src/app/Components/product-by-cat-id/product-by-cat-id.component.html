@@ -16,7 +16,7 @@
   
   <div class="row row-cols-1 row-cols-md-4 g-4 " style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
   
-      <div class="col" *ngFor="let prd of prdOfferlist">
+      <div class="col" *ngFor="let prd of this.searchList">
         <div class="card p-0">
           <div class="d-flex justify-content-center">
             <img src={{prd.productImageList[0].path}} style="width: auto; height: 150px;" alt="...">

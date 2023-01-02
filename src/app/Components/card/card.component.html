@@ -32,7 +32,7 @@
          </div>
         </div>
         <div class="col-lg-2 col-md-12 col-sm-12">
-          <label style="margin: 3px;font-weight: bold;">العدد</label>
+          <label style="margin: 3px;font-weight: bold;">{{"Quantity"|translate}}</label>
           <input style="width: 70px;margin: 3px;"
             type="number"
             [(ngModel)]="item[i].quantity"
@@ -41,15 +41,15 @@
           />
         </div>
         <div class="col-lg-2 col-md-12 col-sm-12">
-          <h6 >
-            {{"Total price"|translate}} : {{ item[i].quantity * data.totalPrice }}
+          <h6  >
+           <span class="fw-bold"> {{"Total price"|translate}} :</span> {{ item[i].quantity * data.totalPrice }}
           </h6>
         </div>
         <hr />
 
       </div>
   <div>
-    <label class="m-1" for="TotalPrice"> {{"Order Total Price"|translate}}</label>
+    <label class="m-1 fw-bold" for="TotalPrice"> {{"Order Total Price"|translate}}</label>
     <input class="m-1" type="text" id="TotalPrice" [(ngModel)]="TotalPrice"  />
   </div>
  

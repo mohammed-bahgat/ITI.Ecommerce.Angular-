@@ -22,7 +22,7 @@ export class OrderAPIService {
     }
 
     delete(id:number):Observable<void>{
-      return this.httpClient.post<void>(`${environment.APIBaseURL}/Order/Delete`,id, this.httpOptions)
+      return this.httpClient.get<void>(`${environment.APIBaseURL}/Order/Delete?id=${id}`)
     }
      update(Order:IOrder):Observable<void>{
       return this.httpClient.post<void>(`${environment.APIBaseURL}/Order/Update`,JSON.stringify(Order), this.httpOptions)
@@ -32,5 +32,13 @@ export class OrderAPIService {
     }
     getByCustomerId(id:string):Observable<IOrder[]>{
       return this.httpClient.get<IOrder[]>(`${environment.APIBaseURL}/Order/GetByCustomerId?CustomerId=${id}`);
+    }
+
+    getRate(orderId:number,prdId:number):Observable<number>{
+      return this.httpClient.get<number>(`${environment.APIBaseURL}/Order/GetRate?orderId=${orderId}&productId=${prdId}`);
+    }
+
+    setRate(orderId:number,prdId:number,rate:number):Observable<void>{
+      return this.httpClient.get<void>(`${environment.APIBaseURL}/Order/SetRate?orderId=${orderId}&productId=${prdId}&rate=${rate}`);
     }
 }

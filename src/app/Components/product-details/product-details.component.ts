@@ -46,6 +46,8 @@ currentCulture: string;
     
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.currentCulture = event.lang;
+      console.log(this.currentCulture );
+      
     }); }
     )
     
