@@ -36,7 +36,7 @@ export class CardComponent implements OnInit {
     private orderSer: OrderAPIService,
     private translate: TranslateService
   ) {
-    this.currentCulture = 'ar';
+    this.currentCulture = 'en';
   }
 
   ngOnInit(): void {

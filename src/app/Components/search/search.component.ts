@@ -24,7 +24,7 @@ currentCulture: string;
     private translate: TranslateService, 
     private route:Router, 
     private shoppingCartservice:ShoppingCartService) { 
-      this.currentCulture = 'ar';
+      this.currentCulture = 'en';
 
     }
 

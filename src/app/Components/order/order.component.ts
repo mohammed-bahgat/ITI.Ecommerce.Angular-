@@ -34,7 +34,7 @@ productrate!:number[][];
     private translate: TranslateService ) {
     this.Address = this.cookieService.get('UserAddress');
     this.customerId=this.cookieService.get('UserId');
-    this.currentCulture = 'ar';
+    this.currentCulture = 'en';
   }
 
   ngOnInit(): void {

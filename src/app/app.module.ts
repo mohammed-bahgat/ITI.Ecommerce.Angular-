@@ -66,7 +66,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage:'ar',
+      defaultLanguage:'en',
       loader:{
         provide:TranslateLoader,
         useFactory : httpTranslateLoader,

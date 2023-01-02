@@ -20,7 +20,7 @@ filterProductList:IProductOffer[]=[];
     private route:Router
     , private shoppingCartservice:ShoppingCartService,
      private translate: TranslateService) {
-      this.currentCulture = 'ar';
+      this.currentCulture = 'en';
       }
 
   ngOnInit(): void {

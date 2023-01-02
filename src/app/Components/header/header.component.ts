@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     private route: Router,
     private productOfferApiService: ProductOfferApiService
   ) {
-    this.currentCulture = 'ar';
+    this.currentCulture = 'en';
   }
 
   ngOnInit(): void {

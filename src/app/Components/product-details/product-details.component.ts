@@ -23,7 +23,7 @@ currentCulture: string;
               private shoppingCartservice:ShoppingCartService,
               private location: Location,
               private translate: TranslateService ) { 
-                this.currentCulture = 'ar';
+                this.currentCulture = 'en';
               }
 
   ngOnInit(): void {

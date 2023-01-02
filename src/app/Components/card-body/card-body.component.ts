@@ -20,7 +20,7 @@ export class CardBodyComponent implements OnInit {
   constructor(private productOfferApiService:ProductOfferApiService , private route:Router
     , private shoppingCartservice:ShoppingCartService,
     private translate: TranslateService) { 
-      this.currentCulture = 'ar';
+      this.currentCulture = 'en';
   }
 
   ngOnInit(): void {

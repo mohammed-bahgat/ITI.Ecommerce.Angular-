@@ -30,7 +30,7 @@ export class UpdateOrderComponent implements OnInit {
     private activedRoute:ActivatedRoute,
     private translate: TranslateService) 
     {
-      this.currentCulture = 'ar';
+      this.currentCulture = 'en';
     }
   ngOnInit(): void {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
